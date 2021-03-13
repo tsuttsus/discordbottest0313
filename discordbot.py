@@ -1,7 +1,6 @@
 from discord.ext import commands
 import os
 import traceback
-import discord
 
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
@@ -11,14 +10,6 @@ async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
-@bot.listen()
-async def on_message(message):
-    print('one')
-
-'''
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
 
 @bot.command()
 async def poll(ctx, about = "question", *args):
@@ -34,6 +25,11 @@ async def poll(ctx, about = "question", *args):
         for i in range(cnt):
             await msg.add_reaction(emojis[i])
     else:
-        await ctx.send("すまないが項目は4つまでなんだ...")
+        await ctx.send("項目は4つまでなんだ...")
+
+'''
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
 '''
 bot.run(token)
