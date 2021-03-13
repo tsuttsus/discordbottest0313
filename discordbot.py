@@ -21,7 +21,7 @@ async def on_message(message):
 async def ping(ctx):
     await ctx.send('pong')
 '''
-@client.command()
+@bot.command()
 async def poll(ctx, about = "question", *args):
     emojis = ["1⃣","2⃣","3⃣","4⃣"]
 
