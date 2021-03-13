@@ -12,12 +12,9 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
-@bot.listen()
 async def on_message(message):
-    if message.content.startswith("おはよう"):
-        if client.user != message.author:
-            m = "おはようございます" + message.author.name + "さん！"
-            await message.channel.send(m)
+    print('one')
+
 '''
 @bot.command()
 async def ping(ctx):
