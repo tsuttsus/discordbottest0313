@@ -5,6 +5,8 @@ import traceback
 bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 
+time=0
+s=0
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -12,6 +14,16 @@ async def on_command_error(ctx, error):
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
 
+@client.event
+async def on_message(message):
+    # 「おはよう」で始まるか調べる
+    if message.content.startswith("おはよう"):
+        # 送り主がBotだった場合反応したくないので
+        if client.user != message.author:
+            # メッセージを書きます
+            m = "おはようございます" + message.author.name + "さん！"
+            # メッセージが送られてきたチャンネルへメッセージを送ります
+            await message.channel.send(m)
 
 @bot.command()
 async def ping(ctx):
@@ -19,3 +31,9 @@ async def ping(ctx):
 
 
 bot.run(token)
+
+import datetime
+import io
+import os
+import time
+
