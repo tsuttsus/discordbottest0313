@@ -31,9 +31,3 @@ async def ping(ctx):
 
 
 bot.run(token)
-
-import datetime
-import io
-import os
-import time
-
