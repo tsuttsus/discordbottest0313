@@ -11,17 +11,18 @@ async def on_command_error(ctx, error):
     orig_error = getattr(error, "original", error)
     error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
     await ctx.send(error_msg)
-'''
+
 @bot.event
 async def on_message(message):
     if message.content.startswith("おはよう"):
         if client.user != message.author:
             m = "おはようございます" + message.author.name + "さん！"
             await message.channel.send(m)
+'''
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
-'''
+
 @bot.command()
 async def poll(ctx, about = "question", *args):
     emojis = ["1⃣","2⃣","3⃣","4⃣"]
@@ -37,5 +38,5 @@ async def poll(ctx, about = "question", *args):
             await msg.add_reaction(emojis[i])
     else:
         await ctx.send("すまないが項目は4つまでなんだ...")
-
+'''
 bot.run(token)
